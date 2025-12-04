@@ -23,7 +23,10 @@ const About = () => {
           >
             <h2 className="text-4xl font-bold mb-4 text-cyan-400">About Me</h2>
             <p className="text-lg text-gray-300 leading-relaxed mb-6">
-              A passionate and results-driven professional with a strong focus on cybersecurity and quality assurance. With a keen eye for detail and a proactive approach, I specialize in identifying vulnerabilities, mitigating risks, and ensuring the delivery of high-quality, secure software. My goal is to contribute to a safer digital world by building robust and resilient systems.
+              IT professional with a Bachelor's background in Informatics and 2 years of experience in IT Project Operations and Quality Assurance (QA). Skilled in ensuring smooth system performance and maintaining product quality, with a solid understanding of the Software Development Life Cycle (SDLC).
+              <br/>
+              <br/>
+              Currently joining a Cybersecurity Bootcamp to develop hands-on skills in ethical hacking, network defense, and vulnerability assessment. Experienced with tools such as OWASP ZAP, Nmap, SQLMap, Burp Suite, and Wireshark. Passionate about enhancing security and contributing to teams focused on penetration testing and cyber defense.
             </p>
             <a href={cv} target='_blank' className='bg-cyan-500 text-white font-semibold py-2 px-6 rounded-full hover:bg-cyan-600 transition-colors duration-300'>
               Download CV

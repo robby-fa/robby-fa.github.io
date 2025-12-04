@@ -1,8 +1,8 @@
 import { FaGithub, FaLinkedin, FaInstagram, FaMedium } from 'react-icons/fa';
 
 const socialLinks = [
-  { icon: <FaGithub />, href: 'https://github.com/robbyfa71' },
-  { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/robby-firdauzy-15373819a/' },
+  { icon: <FaGithub />, href: 'https://github.com/robby-fa' },
+  { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/robbyfa/' },
   { icon: <FaInstagram />, href: 'https://www.instagram.com/robby.f_a/' },
   { icon: <FaMedium />, href: 'https://medium.com/@robbyfirdauzy' },
 ];

@@ -3,19 +3,9 @@ import { motion } from 'framer-motion';
 const Projects = () => {
   const projects = [
     {
-      title: 'SecureAuth System',
-      description: 'A full-stack authentication system with multi-factor authentication and role-based access control.',
-      link: '#',
-    },
-    {
-      title: 'QA Test Suite for E-Commerce',
-      description: 'Developed a comprehensive automated testing suite for an e-commerce platform, improving bug detection by 40%.',
-      link: '#',
-    },
-    {
-      title: 'Vulnerability Scanner',
-      description: 'A custom-built tool to scan web applications for common security vulnerabilities like XSS and SQL injection.',
-      link: '#',
+      title: 'Vulnerability Assessment & Penetration Testing',
+      description: 'Conducted comprehensive security assessments for various web applications, identifying and mitigating critical vulnerabilities.',
+      link: 'https://drive.google.com/file/d/1WIw18CipaiPk2Hy_112ZNhkfcOBVOyYq/view?usp=sharing',
     },
   ];
 
@@ -35,7 +25,7 @@ const Projects = () => {
             >
               <h3 className="text-2xl font-bold mb-2 text-cyan-400">{project.title}</h3>
               <p className="text-gray-400 mb-4 flex-grow">{project.description}</p>
-              <a href={project.link} className="text-cyan-400 hover:underline mt-auto">View Project</a>
+              <a href={project.link} target='_blank' className="text-cyan-400 hover:underline mt-auto">View Project</a>
             </motion.div>
           ))}
         </div>
