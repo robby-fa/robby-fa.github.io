@@ -1,22 +1,23 @@
 import { FaGithub, FaLinkedin, FaInstagram, FaMedium } from 'react-icons/fa';
 
 const socialLinks = [
-  { icon: <FaGithub />, href: 'https://github.com/robby-fa' },
-  { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/robbyfa/' },
-  { icon: <FaInstagram />, href: 'https://www.instagram.com/robby.f_a/' },
-  { icon: <FaMedium />, href: 'https://medium.com/@robbyfirdauzy' },
+  { icon: <FaGithub />, href: 'https://github.com/robby-fa', label: 'GitHub' },
+  { icon: <FaLinkedin />, href: 'https://www.linkedin.com/in/robbyfa/', label: 'LinkedIn' },
+  { icon: <FaInstagram />, href: 'https://www.instagram.com/robby.f_a/', label: 'Instagram' },
+  { icon: <FaMedium />, href: 'https://medium.com/@robbyfirdauzy', label: 'Medium' },
 ];
 
 const SocialLinks = () => {
   return (
     <div className="flex justify-center mt-6 md:justify-start space-x-4">
-      {socialLinks.map((link, index) => (
+      {socialLinks.map((link) => (
         <a
-          key={index}
+          key={link.label}
           href={link.href}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-2xl text-gray-400 hover:text-cyan-400 transition-colors duration-300"
+          aria-label={link.label}
+          className="text-2xl text-slate-400 hover:text-blue-600 transition-colors duration-200"
         >
           {link.icon}
         </a>

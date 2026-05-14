@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import { HiClock, HiCalendar, HiArrowRight } from 'react-icons/hi';
 import { FeedList } from '../FeedList/FeedList';
 
 function formatDate(date: Date): string {
@@ -13,55 +14,88 @@ function formatDate(date: Date): string {
 export default function MyFeeds() {
     const navigate = useNavigate();
 
-    const handleNavigate = (href: string | undefined) => {
-        if (href) {
-            navigate(href);
-        }
-    };
-
     return (
-        <section className="py-16 bg-gray-900">
-            <div className="container mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center mb-16 text-cyan-400">My Feeds</h2>
-                <div className="px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="min-h-screen bg-slate-50">
+            {/* Page Header */}
+            <div className="bg-white border-b border-slate-100">
+                <div className="container mx-auto px-6 md:px-16 py-14">
+                    <p className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-2">
+                        Writing & Notes
+                    </p>
+                    <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-3">My Feeds</h1>
+                    <p className="text-slate-500 text-base max-w-xl">
+                        Articles, cheat sheets, and notes I write about technology, security, and things I find interesting.
+                    </p>
+                </div>
+            </div>
+
+            {/* Articles Grid */}
+            <div className="container mx-auto px-6 md:px-16 py-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     {FeedList.map((feed, index) => (
-                        <motion.button
+                        <motion.article
                             key={feed.id}
-                            onClick={() => handleNavigate(feed.href)}
-                            className="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-cyan-400/30 transition-shadow duration-300 text-left w-full"
+                            onClick={() => navigate(feed.href)}
+                            className="bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer overflow-hidden flex flex-col group"
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            transition={{ duration: 0.4, delay: index * 0.1 }}
                         >
-                            <div className="relative h-48 overflow-hidden">
+                            {/* Thumbnail */}
+                            <div className="h-44 overflow-hidden bg-slate-100">
                                 <img
                                     src={feed.image}
                                     alt={feed.title}
-                                    className="w-full h-full object-cover transform hover:scale-110 transition-transform duration-300"
+                                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                                    onError={(e) => {
+                                        (e.target as HTMLImageElement).style.display = 'none';
+                                    }}
                                 />
                             </div>
-                            <div className="p-6">
-                                <h3 className="text-xl font-semibold mb-3 text-white hover:text-cyan-400 transition-colors duration-300">
-                                    {feed.title}
-                                </h3>
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    {feed.tags.map(tag => (
+
+                            {/* Content */}
+                            <div className="p-6 flex flex-col flex-1">
+                                {/* Tags */}
+                                <div className="flex flex-wrap gap-1.5 mb-3">
+                                    {feed.tags.map((tag) => (
                                         <span
                                             key={tag}
-                                            className="px-3 py-1 bg-gray-700 text-cyan-400 text-sm rounded-full"
+                                            className="text-xs font-semibold px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700"
                                         >
                                             {tag}
                                         </span>
                                     ))}
                                 </div>
-                                <div className="text-gray-400 text-sm">
-                                    {formatDate(feed.createdAt)}
+
+                                {/* Title */}
+                                <h2 className="text-lg font-bold text-slate-800 mb-2 group-hover:text-blue-600 transition-colors leading-snug">
+                                    {feed.title}
+                                </h2>
+
+                                {/* Description */}
+                                <p className="text-sm text-slate-500 leading-relaxed mb-4 flex-1">
+                                    {feed.description}
+                                </p>
+
+                                {/* Footer */}
+                                <div className="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
+                                    <div className="flex items-center gap-3 text-xs text-slate-400">
+                                        <span className="flex items-center gap-1">
+                                            <HiCalendar className="text-blue-300" />
+                                            {formatDate(feed.createdAt)}
+                                        </span>
+                                        <span className="flex items-center gap-1">
+                                            <HiClock className="text-blue-300" />
+                                            {feed.readTime}
+                                        </span>
+                                    </div>
+                                    <HiArrowRight className="text-blue-400 group-hover:translate-x-1 transition-transform" />
                                 </div>
                             </div>
-                        </motion.button>
+                        </motion.article>
                     ))}
                 </div>
             </div>
-        </section>
+        </div>
     );
 }
